@@ -26,6 +26,8 @@ Trade Pad is a minimalist yet powerful trading journal that helps you track and 
 1. Install dependencies:
 
 ```bash
+npm install
+
 npm run install-deps
 ```
 
@@ -37,7 +39,23 @@ cp ./frontend/.env.example ./frontend/.env
 cp ./backend/.env.example ./backend/.env
 ```
 
-3. Run the app:
+3. Create database:
+```bash
+psql -U postgres
+
+CREATE DATABASE trade_pad;
+
+\q
+```
+
+4. Run migrations:
+```bash
+cd backend
+
+npx prisma migrate dev
+```
+
+5. Run the app:
 
 ```bash
 npm run start
