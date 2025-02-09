@@ -2,6 +2,8 @@
 
 Trade Pad is a minimalist yet powerful trading journal that helps you track and analyze your trades.
 
+![App Screenshot](./assets/home.png)
+
 ## Features
 
 - **Trade Tracking**: Easily log and manage your crypto trades across multiple trading pairs
