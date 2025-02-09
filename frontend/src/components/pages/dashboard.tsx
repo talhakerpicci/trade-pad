@@ -114,7 +114,7 @@ export function DashboardPage() {
                     <Card>
                         <CardHeader>
                             <div className="flex justify-between items-center">
-                                <CardTitle>Portfolio Value</CardTitle>
+                                <CardTitle>Total Profit/Loss</CardTitle>
                                 <Button
                                     variant="ghost"
                                     size="icon"

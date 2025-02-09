@@ -96,7 +96,7 @@ export function PortfolioChart({ isExpanded, onExpandChange }: PortfolioChartPro
                         tick={{ fill: 'hsl(var(--muted-foreground))' }}
                     />
                     <Tooltip
-                        formatter={(value: number) => [formatCurrency(value), "Portfolio Value"]}
+                        formatter={(value: number) => [formatCurrency(value), "Profit"]}
                         labelFormatter={(label) => format(new Date(label), 'MMM d, yyyy')}
                         contentStyle={{
                             backgroundColor: 'hsl(var(--popover))',
@@ -142,7 +142,7 @@ export function PortfolioChart({ isExpanded, onExpandChange }: PortfolioChartPro
             <ChartDialog
                 open={isExpanded}
                 onOpenChange={onExpandChange}
-                title="Portfolio Value"
+                title="Total Profit/Loss Over Time"
             >
                 {renderChart("h-full w-full")}
             </ChartDialog>
