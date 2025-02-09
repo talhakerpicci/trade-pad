@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  initialAmount Float
+  trades        Trade[]
+  portfolioHistory PortfolioHistory[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Trade {
+  id          String    @id @default(uuid())
+  market      String    // e.g., "ETH/USDT"
+  buyPrice    Float
+  sellPrice   Float?
+  quantity    Float
+  buyTime     DateTime  @default(now())
+  sellTime    DateTime?
+  profit      Float?
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  isActive    Boolean   @default(true)
+  portfolioHistoryId String?
+  portfolioHistory   PortfolioHistory? @relation(fields: [portfolioHistoryId], references: [id])
+}
+
+model PortfolioHistory {
+  id            String    @id @default(uuid())
+  userId        String
+  startDate     DateTime  @default(now())
+  endDate       DateTime?
+  initialAmount Float
+  finalAmount   Float?
+  user          User      @relation(fields: [userId], references: [id])
+  trades        Trade[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+} 
